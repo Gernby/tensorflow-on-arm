@@ -39,11 +39,11 @@ RED='\033[0;31m'
 BLUE='\033[1;36m'
 NC='\033[0m'
 TF_PYTHON_VERSION=${TF_PYTHON_VERSION:-"3"}
-TF_VERSION=${TF_VERSION:-"v1.14.0"}
+TF_VERSION=${TF_VERSION:-"added-aarch64"}
 TF_BUILD_OUTPUT=${TF_BUILD_OUTPUT:-"/tmp/tensorflow_pkg"}
 BAZEL_VERSION=${BAZEL_VERSION:-"0.24.1"}
 CROSSTOOL_WHEEL_ARCH=${CROSSTOOL_WHEEL_ARCH:-"any"}
-TF_GIT_URL=${TF_GIT_URL:-"https://github.com/tensorflow/tensorflow"}
+TF_GIT_URL=${TF_GIT_URL:-"https://github.com/gernby/tensorflow"}
 WORKDIR=${WORKDIR:-"$DIR"}
 BAZEL_BIN="$(command -v bazel)"
 
