@@ -1,13 +1,12 @@
 FROM ubuntu:16.04
 
-RUN dpkg --add-architecture armhf && dpkg --add-architecture arm64 \
+RUN dpkg dpkg --add-architecture arm64 \
     && apt-get update && apt-get install -y \
-        openjdk-11-jdk automake autoconf libpng-dev \
+        openjdk-8-jdk automake autoconf libpng-dev \
         curl zip unzip libtool swig zlib1g-dev pkg-config git wget xz-utils \
         python-numpy python-pip python-mock \
         python3-numpy python3-pip python3-mock python-future \
         libpython-dev libpython-all-dev libpython3-dev libpython3-all-dev \
-        libpython-dev:armhf libpython-all-dev:armhf libpython3-dev:armhf libpython3-all-dev:armhf \
         libpython-dev:arm64 libpython-all-dev:arm64 libpython3-dev:arm64 libpython3-all-dev:arm64 g++ gcc
 
 RUN pip install -U --user keras_applications==1.0.5 --no-deps \
