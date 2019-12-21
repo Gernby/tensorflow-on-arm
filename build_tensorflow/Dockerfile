@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM ubuntu:16.04
 
 RUN dpkg --add-architecture armhf && dpkg --add-architecture arm64 \
     && apt-get update && apt-get install -y \
@@ -20,8 +20,8 @@ RUN /bin/bash -c "update-alternatives --install /usr/bin/python python /usr/bin/
     && /bin/bash -c "update-alternatives --install /usr/bin/python python /usr/bin/python3 150"
 
 WORKDIR /root
-RUN git clone https://github.com/lhelontra/tensorflow-on-arm/
+RUN git clone https://github.com/gernby/tensorflow-on-arm/
 
 WORKDIR /root/tensorflow-on-arm/build_tensorflow/
-RUN git checkout v1.14.0
+RUN git checkout fixed-aarch64
 CMD ["/bin/bash"]
