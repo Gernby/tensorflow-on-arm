@@ -277,7 +277,7 @@ function prepare_env()
   # prepare environment for compiling
   create_workdir
   #build_bazel
-  #toolchain
+  toolchain
   #download_tensorflow
   echo -ne "Workdir:            \t${WORKDIR}\n"
   echo -ne "Bazel binary:       \t${BAZEL_BIN}\n"
