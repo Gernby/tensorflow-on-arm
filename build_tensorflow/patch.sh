@@ -28,10 +28,10 @@ function tf_toolchain_patch()
   [ -z "$CROSSTOOL_EXTRA_INCLUDE" ] && CROSSTOOL_EXTRA_INCLUDE="/usr/local/include/"
   local CROSSTOOL_VERSION=$($CROSSTOOL_DIR/bin/$CROSSTOOL_NAME-gcc -dumpversion)
   git apply << EOF
-diff --git a/BUILD.local_arm_compiler b/BUILD.local_arm_compiler
+diff --git a/BUILD.local_aarch64_compiler b/BUILD.local_aarch64_compiler
 new file mode 100644
 index 000000000..e5d8cc384
-+++ b/BUILD.local_arm_compiler
++++ b/BUILD.local_aarch64_compiler
 @@ -0,0 +1,81 @@
 +package(default_visibility = ['//visibility:public'])
 +
@@ -123,18 +123,18 @@ index 7057d3f149..3fedb4f543 100644
  tf_workspace()
 
 +new_local_repository(
-+    name = "local_arm_compiler",
++    name = "local_aarch64_compiler",
 +    path = "$CROSSTOOL_DIR",
-+    build_file = "BUILD.local_arm_compiler",
++    build_file = "BUILD.local_aarch64_compiler",
 +)
 +
  http_archive(
      name = "inception_v1",
      build_file = "//:models.BUILD",
-diff --git a/tools/local_arm_compiler/BUILD b/tools/local_arm_compiler/BUILD
+diff --git a/tools/local_aarch64_compiler/BUILD b/tools/local_aarch64_compiler/BUILD
 new file mode 100644
 index 000000000..ccddd6d50
-+++ b/tools/local_arm_compiler/BUILD
++++ b/tools/local_aarch64_compiler/BUILD
 @@ -0,0 +1,50 @@
 +package(default_visibility = ["//visibility:public"])
 +
@@ -159,7 +159,7 @@ index 000000000..ccddd6d50
 +filegroup(
 +  name = 'linaro_linux_all_files',
 +  srcs = [
-+    '@local_arm_compiler//:compiler_pieces',
++    '@local_aarch64_compiler//:compiler_pieces',
 +  ],
 +)
 +
@@ -186,10 +186,10 @@ index 000000000..ccddd6d50
 +  strip_files = 'linaro_linux_all_files',
 +  supports_param_files = 1,
 +  toolchain_identifier = "$CROSSTOOL_NAME",)
-diff --git a/tools/local_arm_compiler/CROSSTOOL b/tools/local_arm_compiler/CROSSTOOL
+diff --git a/tools/local_aarch64_compiler/CROSSTOOL b/tools/local_aarch64_compiler/CROSSTOOL
 new file mode 100644
 index 000000000..3ff006da8
-+++ b/tools/local_arm_compiler/CROSSTOOL
++++ b/tools/local_aarch64_compiler/CROSSTOOL
 @@ -0,0 +1,862 @@
 +major_version: "local"
 +minor_version: ""
