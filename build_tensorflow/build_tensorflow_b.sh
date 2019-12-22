@@ -275,7 +275,7 @@ function build_tensorflow()
 function prepare_env()
 {
   # prepare environment for compiling
-  #create_workdir
+  create_workdir
   #build_bazel
   #toolchain
   #download_tensorflow
