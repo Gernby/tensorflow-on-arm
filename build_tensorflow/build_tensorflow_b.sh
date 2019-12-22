@@ -24,14 +24,14 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-[ -f "$1" ] && {
-  source "$1"
+[ -f "$2" ] && {
+  source "$2"
 } || {
-  echo -ne "Use: $0 <config>\n\tFor prepare environment only, uses: $0 <config> prepare\n"
+  echo -ne "Use: $1 <config>\n\tFor prepare environment only, uses: $1 <config> prepare\n"
   exit 1
 }
 
-DIR="$(realpath $(dirname $0))"
+DIR="$(realpath $(dirname $1))"
 source "${DIR}/patch.sh"
 
 # builtin variables
@@ -292,4 +292,4 @@ function main()
     build_tensorflow
 }
 
-[ "$2" == "prepare" ] && prepare_env || main
+[ "$3" == "prepare" ] && prepare_env || main
